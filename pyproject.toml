@@ -1,2 +1,31 @@
+[project]
+name = "dumbo"
+version = "0.1.0"
+description = "Assistant vocal : wakeword, transcription, publication MQTT"
+readme = "README.md"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy",
+    "openwakeword",
+    "paho-mqtt>=2",
+    "sounddevice",
+]
+
+[project.optional-dependencies]
+whisper = ["faster-whisper"]
+linto = ["transformers>=5", "torch"]
+
+[tool.uv]
+package = false
+
+# torch en version CPU (sinon PyPI installe la version CUDA, plusieurs Go)
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
 [tool.ruff.lint.isort]
-known-first-party = ["consts", "microphone", "mqtt"]
+known-first-party = ["consts", "microphone", "mqtt", "transcriber"]

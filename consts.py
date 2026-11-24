@@ -14,10 +14,14 @@ MAX_FRAMES = int(8000 / FRAME_MS)  # 8 s max de commande
 SILENCE_THRESHOLD = 500  # RMS (int16) en dessous duquel on considère du silence
 
 # Transcription
+TRANSCRIBER = "whisper"  # moteur par défaut, cf. transcriber.ENGINES
+LANGUAGE = "fr"
+
 WHISPER_MODEL = "small"
 WHISPER_DEVICE = "cpu"
 WHISPER_COMPUTE_TYPE = "int8"
-LANGUAGE = "fr"
+
+LINTO_MODEL = "linagora/linto_stt_fr_fastconformer_pc"
 
 # MQTT
 MQTT_HOST = "10.10.10.10"
